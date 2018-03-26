@@ -8,7 +8,7 @@ Allow services to build, run and link to other services defined locally.
 
 Given three services, Front, API, and DB, where Front and API are both wercker
 projects, and Front depends on API and API depends on DB, allow for rapid
-co-developemnt of Front and API while allowing both projects to remain
+co-development of Front and API while allowing both projects to remain
 separate.
 
 ## Details
