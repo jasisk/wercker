@@ -305,7 +305,7 @@ func (p *Runner) GetConfig() (*core.Config, string, error) {
 	if rawConfig.NoResponseTimeout > 0 {
 		noResponseTimeout := util.MinInt(rawConfig.NoResponseTimeout, MaxNoResponseTimeout)
 		p.options.NoResponseTimeout = noResponseTimeout * 60 * 1000 // convert to milliseconds
-		p.logger.Debugln("NoReponseTimeout set in config, new NoReponseTimeout:", noResponseTimeout)
+		p.logger.Debugln("NoResponseTimeout set in config, new NoResponseTimeout:", noResponseTimeout)
 	}
 
 	return rawConfig, string(werckerYaml), nil
