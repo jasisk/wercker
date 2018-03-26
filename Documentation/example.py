@@ -123,7 +123,7 @@ class Step(object):
          'WERCKER_STEP_ID': self.id,
          'WERCKER_STEP_OWNER': self._owner,
          'WERCKER_STEP_NAME': self._name,
-         'WERCKER_REPORT_NUMBERS_FILE': 'unusued',
+         'WERCKER_REPORT_NUMBERS_FILE': 'unused',
          'WERCKER_REPORT_MESSAGE_FILE': self.report_message_file(),
          'WERCKER_REPORT_ARTIFACTS_DIR': self.report_artifacts_dir(),
          }
