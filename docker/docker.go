@@ -395,7 +395,7 @@ func (s *DockerScratchPushStep) Execute(ctx context.Context, sess *core.Session)
 		Hostname:     containerID[:16],
 		WorkingDir:   s.workingDir,
 		Volumes:      s.volumes,
-		ExposedPorts: tranformPorts(s.ports),
+		ExposedPorts: transformPorts(s.ports),
 	}
 
 	// Make the JSON file we need
@@ -1060,7 +1060,7 @@ func (s *DockerPushStep) ShouldSyncEnv() bool {
 	return true
 }
 
-func tranformPorts(in map[docker.Port]struct{}) map[nat.Port]struct{} {
+func transformPorts(in map[docker.Port]struct{}) map[nat.Port]struct{} {
 	result := make(map[nat.Port]struct{})
 
 	for k, v := range in {
