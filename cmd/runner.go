@@ -670,7 +670,7 @@ func (p *Runner) RunStep(shared *RunnerShared, step core.Step, order int) (*Step
 	if step.ShouldSyncEnv() {
 		err := shared.pipeline.SyncEnvironment(shared.sessionCtx, shared.sess)
 		if err != nil {
-			// If an error occured, just log and ignore it
+			// If an error occurred, just log and ignore it
 			p.logger.WithField("Error", err).Warn("Unable to sync environment")
 		}
 	}
