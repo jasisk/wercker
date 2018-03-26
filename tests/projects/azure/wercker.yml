@@ -6,7 +6,7 @@ box:
   azure-resource-group: $AZURE_RESOURCE_GROUP
   azure-registry-name: $AZURE_REGISTRY_NAME
   azure-login-server: $AZURE_LOGIN_SERVER
-  id: faiqus-contianer
+  id: faiqus-container
   tag: latest
   cmd: /bin/sh
 build:
@@ -22,4 +22,4 @@ build:
         azure-resource-group: $AZURE_RESOURCE_GROUP
         azure-registry-name: $AZURE_REGISTRY_NAME
         azure-login-server: $AZURE_LOGIN_SERVER
-        repository: faiqus-contianer
+        repository: faiqus-container
