@@ -232,7 +232,7 @@ func smartSplitLines(line, sentinel string) []string {
 // Ways to know a command is done:
 //  [x] We received the sentinel echo
 //  [x] The container has exited and we've exhausted the incoming data
-//  [x] The session has closed and we've exhaused the incoming data
+//  [x] The session has closed and we've exhausted the incoming data
 //  [x] The command has timed out
 // Ways for a command to be successful:
 //  [x] We received the sentinel echo with exit code 0
