@@ -298,7 +298,7 @@ Build Flow
       - Mount wercker cache as readonly volume
       - Mount step output directories
       - Link services through the docker link api
-  - Report detcted steps to wercker-api
+  - Report detected steps to wercker-api
   - Set environment variables (environment variables -> wercker-api)
     - Generic environment variables:
       - WERCKER="true"
