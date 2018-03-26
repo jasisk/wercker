@@ -25,7 +25,7 @@ import (
 	"golang.org/x/net/context"
 )
 
-// ShellStep needs to implemenet IStep
+// ShellStep needs to implement IStep
 type ShellStep struct {
 	*core.BaseStep
 	Code          string

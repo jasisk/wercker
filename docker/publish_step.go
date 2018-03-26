@@ -30,7 +30,7 @@ import (
 	"golang.org/x/net/context"
 )
 
-// PublishStep needs to implemenet IStep
+// PublishStep needs to implement IStep
 type PublishStep struct {
 	*core.BaseStep
 	user            string

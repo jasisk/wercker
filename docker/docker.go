@@ -607,7 +607,7 @@ func (s *DockerScratchPushStep) CollectArtifact(containerID string) (*core.Artif
 	return fullArtifact, nil
 }
 
-// DockerPushStep needs to implemenet IStep
+// DockerPushStep needs to implement IStep
 type DockerPushStep struct {
 	*core.BaseStep
 	options       *core.PipelineOptions
