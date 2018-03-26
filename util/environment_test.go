@@ -63,7 +63,7 @@ func (s *EnvironmentSuite) TestInterpolate() {
 	//tt.Equal(env.Interpolate("$PUBLIC"), "foo", "Non-prefixed should alias any X_ prefixed vars.")
 	s.Equal(env.Interpolate("${PUBLIC}"), "foo", "Alternate shell style vars should work.")
 
-	// NB: stipping only works because we can Update with the passthru
+	// NB: stepping only works because we can Update with the passthru
 	// function above
 	s.Equal(env.Interpolate("$PRIVATE"), "zed", "Xs should be stripped.")
 	s.Equal(env.Interpolate("$OTHER"), "otter", "XXXs should be stripped.")
