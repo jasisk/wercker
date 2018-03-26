@@ -37,7 +37,7 @@ const (
 	BuildFinished = "BuildFinished"
 
 	// BuildStepsAdded is the event when wercker has parsed the wercker.yml and
-	// has valdiated that the steps exist.
+	// has validated that the steps exist.
 	BuildStepsAdded = "BuildStepsAdded"
 
 	// BuildStepStarted is the event when wercker has started a new buildstep.
