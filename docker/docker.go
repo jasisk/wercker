@@ -978,7 +978,7 @@ func (s *DockerPushStep) buildTags() []string {
 func (s *DockerPushStep) tagAndPush(imageID string, e *core.NormalizedEmitter, client *DockerClient) (int, error) {
 	// Create a pipe since we want a io.Reader but Docker expects a io.Writer
 	r, w := io.Pipe()
-	// emitStatusses in a different go routine
+	// emitStatuses in a different go routine
 	go EmitStatus(e, r, s.options)
 	defer w.Close()
 	for _, tag := range s.tags {

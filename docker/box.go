@@ -579,7 +579,7 @@ func (b *DockerBox) Fetch(ctx context.Context, env *util.Environment) (*docker.I
 	r, w := io.Pipe()
 	defer w.Close()
 
-	// emitStatusses in a different go routine
+	// emitStatuses in a different go routine
 	go EmitStatus(e, r, b.options)
 
 	options := docker.PullImageOptions{
