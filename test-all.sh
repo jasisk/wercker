@@ -5,7 +5,7 @@
 # be moved into a golang test package.
 # 
 # These tests use the --docker-local parameter, which means that if they need an image
-# that is not alreadfy in the docker daemon these tests will fail with "image not found"
+# that is not already in the docker daemon these tests will fail with "image not found"
 #
 # Currently the following images are required, so you can avoid this by running the following before running the tests:
 # (A better solution is needed)
