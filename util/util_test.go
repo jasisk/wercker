@@ -34,7 +34,7 @@ func TestUtilSuite(t *testing.T) {
 
 func (s *UtilSuite) TestCounterIncrement() {
 	counter := &Counter{}
-	s.Equal(0, counter.Current, "expected counter to intialize with 0")
+	s.Equal(0, counter.Current, "expected counter to initialize with 0")
 
 	n1 := counter.Increment()
 	s.Equal(0, n1, "expected first increment to be 0")
@@ -45,7 +45,7 @@ func (s *UtilSuite) TestCounterIncrement() {
 
 func (s *UtilSuite) TestCounterIncrement2() {
 	counter := &Counter{Current: 3}
-	s.Equal(3, counter.Current, "expected counter to intialize with 3")
+	s.Equal(3, counter.Current, "expected counter to initialize with 3")
 
 	n1 := counter.Increment()
 	s.Equal(3, n1, "expected first increment to be 3")
