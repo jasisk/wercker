@@ -69,7 +69,7 @@ project's code repository and looks like this::
   deploy:
       # By default (?), the deploy Container is based on the committed Image
       # from the build that it has been triggered on, but that can be
-      # overriden. Some common overrides would be to use a fresh instance
+      # overridden. Some common overrides would be to use a fresh instance
       # of the base Image (the default in the current system) or to use
       # a premade production snapshot.
       #box: $WERCKER_LAST_BUILD_BOX
