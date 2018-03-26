@@ -33,7 +33,7 @@ func ParseManifest(b []byte) (*StepManifest, error) {
 }
 
 // ParseManifestReader first reads all of r into memory before using
-// ParseManifest to unmarshall the content.
+// ParseManifest to unmarshal the content.
 func ParseManifestReader(r io.Reader) (*StepManifest, error) {
 	b, err := ioutil.ReadAll(r)
 	if err != nil {
