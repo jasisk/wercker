@@ -32,7 +32,7 @@ const (
 	// BuildStarted is the event when wercker has started a build.
 	BuildStarted = "BuildStarted"
 
-	// BuildFinished occures when a pipeline finishes the main phase. It is
+	// BuildFinished occurs when a pipeline finishes the main phase. It is
 	// possible that after-steps are run after this event.
 	BuildFinished = "BuildFinished"
 
