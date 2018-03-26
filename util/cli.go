@@ -27,7 +27,7 @@ import (
 	"github.com/codegangsta/cli"
 )
 
-// Settings mathces the cli.Context interface so we can make a cheap
+// Settings matches the cli.Context interface so we can make a cheap
 // re-implementation for testing purposes.
 type Settings interface {
 	Int(string, ...interface{}) (int, bool)
