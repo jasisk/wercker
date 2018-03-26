@@ -160,7 +160,7 @@ func (e *Environment) GetInclHidden(key string) string {
 }
 
 // LoadFile imports key,val pairs from the provided file path. File entries
-// should be 1 per line in the form key=value. Blank lines and lines begining
+// should be 1 per line in the form key=value. Blank lines and lines beginning
 // with # are ignored.
 func (e *Environment) LoadFile(f string) error {
 	file, err := os.Open(f)
