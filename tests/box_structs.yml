@@ -51,5 +51,5 @@ azure:
     azure-subscription-id: "subscriptionid"
     azure-tenant-id: "imatenant"
     azure-resource-group: "coolresource"
-    azure-registry-name: "registy"
+    azure-registry-name: "registry"
     azure-login-server: "wercker.azurecr.io"
