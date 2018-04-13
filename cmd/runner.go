@@ -726,7 +726,7 @@ func (p *Runner) RunStep(ctx context.Context, shared *RunnerShared, step core.St
 			return sr, err
 		}
 
-		if artifact != nil && p.options.ShouldStoreS3 {
+		if artifact != nil && p.options.ShouldStore {
 			artificer := dockerlocal.NewArtificer(p.options, p.dockerOptions)
 			err = artificer.Upload(artifact)
 			if err != nil {

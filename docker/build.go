@@ -96,9 +96,14 @@ func (b *DockerBuild) DockerMessage() string {
 // CollectArtifact copies the artifacts associated with the Build.
 func (b *DockerBuild) CollectArtifact(ctx context.Context, containerID string) (*core.Artifact, error) {
 	artificer := NewArtificer(b.options, b.dockerOptions)
+	var bucket string
+	if b.options.Store == "oci" {
+		bucket = b.options.Bucket
+	} else {
+		bucket = b.options.S3Bucket
+	}
 
 	// Ensure we have the host directory
-
 	artifact := &core.Artifact{
 		ContainerID:   containerID,
 		GuestPath:     b.options.GuestPath("output"),
@@ -106,7 +111,9 @@ func (b *DockerBuild) CollectArtifact(ctx context.Context, containerID string) (
 		HostTarPath:   b.options.HostPath("output.tar"),
 		ApplicationID: b.options.ApplicationID,
 		RunID:         b.options.RunID,
-		Bucket:        b.options.S3Bucket,
+		Store:         b.options.Store,
+		Namespace:     b.options.Namespace,
+		Bucket:        bucket,
 		ContentType:   "application/x-tar",
 	}
 
@@ -117,7 +124,9 @@ func (b *DockerBuild) CollectArtifact(ctx context.Context, containerID string) (
 		HostTarPath:   b.options.HostPath("output.tar"),
 		ApplicationID: b.options.ApplicationID,
 		RunID:         b.options.RunID,
-		Bucket:        b.options.S3Bucket,
+		Store:         b.options.Store,
+		Namespace:      b.options.Namespace,
+		Bucket:        bucket,
 		ContentType:   "application/x-tar",
 	}
 

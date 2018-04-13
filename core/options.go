@@ -1,4 +1,4 @@
-//   Copyright 2016 Wercker Holding BV
+// Copyright (c) 2016,2018 Oracle and/or its affiliates. All rights reserved.
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
 //   you may not use this file except in compliance with the License.
@@ -128,6 +128,25 @@ func NewAWSOptions(c util.Settings, e *util.Environment, globalOpts *GlobalOptio
 		AWSSecretAccessKey: awsSecretAccessKey,
 		S3Bucket:           s3Bucket,
 		S3PartSize:         100 * 1024 * 1024, // 100 MB
+	}, nil
+}
+
+// OciOptions for OCI ObjectStore storage
+type OciOptions struct {
+	*GlobalOptions
+	Namespace string
+	Bucket    string
+}
+
+// NewAWSOptions constructor
+func NewOciOptions(c util.Settings, e *util.Environment, globalOpts *GlobalOptions) (*OciOptions, error) {
+	namespace, _ := c.String("namespace")
+	bucket, _ := c.String("bucket")
+
+	return &OciOptions{
+		GlobalOptions: globalOpts,
+		Namespace:     namespace,
+		Bucket:        bucket,
 	}, nil
 }
 
@@ -293,6 +312,7 @@ func werckerContainerRegistry(c util.Settings) (*url.URL, error) {
 type PipelineOptions struct {
 	*GlobalOptions
 	*AWSOptions
+	*OciOptions
 	// *DockerOptions
 	*GitOptions
 	*ReporterOptions
@@ -316,7 +336,8 @@ type PipelineOptions struct {
 	Repository    string
 	Tag           string
 	Message       string
-	ShouldStoreS3 bool
+	ShouldStore bool
+	Store string
 
 	WorkingDir string
 
@@ -478,6 +499,11 @@ func NewPipelineOptions(c util.Settings, e *util.Environment) (*PipelineOptions,
 		return nil, err
 	}
 
+	ociOpts, err := NewOciOptions(c, e, globalOpts)
+	if err != nil {
+		return nil, err
+	}
+
 	gitOpts, err := NewGitOptions(c, e, globalOpts)
 	if err != nil {
 		return nil, err
@@ -514,8 +540,16 @@ func NewPipelineOptions(c util.Settings, e *util.Environment) (*PipelineOptions,
 	shouldCommit := (repository != "")
 	tag := guessTag(c, e)
 	message := guessMessage(c, e)
-	shouldStoreS3, _ := c.Bool("store-s3")
-
+	shouldStore, _ := c.Bool("store-s3")
+	var store string
+	if shouldStore {
+		store = "s3";
+	} else {
+		store, _ = c.String("store")
+		if store == "s3" || store == "oci" {
+			shouldStore = true
+		}
+	}
 	workingDir, _ := c.String("working-dir")
 	workingDir, _ = filepath.Abs(workingDir)
 
@@ -560,6 +594,7 @@ func NewPipelineOptions(c util.Settings, e *util.Environment) (*PipelineOptions,
 	return &PipelineOptions{
 		GlobalOptions: globalOpts,
 		AWSOptions:    awsOpts,
+		OciOptions:    ociOpts,
 		// DockerOptions:   dockerOpts,
 		GitOptions:      gitOpts,
 		ReporterOptions: reporterOpts,
@@ -579,7 +614,8 @@ func NewPipelineOptions(c util.Settings, e *util.Environment) (*PipelineOptions,
 		Tag:           tag,
 		Repository:    repository,
 		ShouldCommit:  shouldCommit,
-		ShouldStoreS3: shouldStoreS3,
+		ShouldStore: shouldStore,
+		Store: store,
 
 		WorkingDir: workingDir,
 

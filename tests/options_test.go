@@ -1,4 +1,4 @@
-//   Copyright 2016 Wercker Holding BV
+// Copyright (c) 2016,2018 Oracle and/or its affiliates. All rights reserved.
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
 //   you may not use this file except in compliance with the License.
@@ -280,4 +280,30 @@ func (s *OptionsSuite) TestWorkingDirCWD() {
 	}
 
 	run(s, globalFlags, pipelineFlags, test, args)
+}
+
+
+func (suite *OptionsSuite) TestS3StoreOptions() {
+	args := defaultArgs("--store-s3")
+	test := func(c *cli.Context) {
+		opts, err := core.NewPipelineOptions(util.NewCLISettings(c), emptyEnv())
+		suite.Nil(err)
+		suite.Equal("s3", opts.Store)
+		suite.Equal(true, opts.ShouldStore)
+	}
+	run(suite, globalFlags, pipelineFlags, test, args)
+}
+
+func (suite *OptionsSuite) TestOciStoreOptions() {
+	store := "oci"
+	namespace := "my_ns"
+	args := defaultArgs("--store", store, "--namespace="+namespace)
+	test := func(c *cli.Context) {
+		opts, err := core.NewPipelineOptions(util.NewCLISettings(c), emptyEnv())
+		suite.Nil(err)
+		suite.Equal(store, opts.Store)
+		suite.Equal(namespace, opts.Namespace)
+		suite.Equal(true, opts.ShouldStore)
+	}
+	run(suite, globalFlags, pipelineFlags, test, args)
 }

@@ -40,8 +40,10 @@ func NewArtificer(options *core.PipelineOptions, dockerOptions *Options) *Artifi
 	logger := util.RootLogger().WithField("Logger", "Artificer")
 
 	var store core.Store
-	if options.ShouldStoreS3 {
+	if options.Store == "s3" {
 		store = core.NewS3Store(options.AWSOptions)
+	} else if options.Store == "oci" {
+		store = core.NewOciStore(options.OciOptions)
 	}
 
 	return &Artificer{

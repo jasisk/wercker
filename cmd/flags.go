@@ -1,4 +1,4 @@
-//   Copyright © 2016, 2018, Oracle and/or its affiliates.  All rights reserved.
+//   Copyright © 2016,2018 Oracle and/or its affiliates.  All rights reserved.
 //
 //   Licensed under the Apache License, Version 2.0 (the "License");
 //   you may not use this file except in compliance with the License.
@@ -103,6 +103,9 @@ var (
 			(~/.aws/config, AWS_SECRET_ACCESS_KEY, etc), or from the --aws-secret-key and
 			--aws-access-key flags. It will upload to a bucket defined by --s3-bucket in
 			the region named by --aws-region`},
+		cli.StringFlag{Name: "store", Value: "",
+			Usage: `[s3|oci] Store artifacts and containers on OCI ObjectStore or s3. Setting --store to s3 is equivalent to --store-s3.
+			This requires access to OCI ObjectStore or aws credentials`},
 	}
 
 	// These flags affect our local execution environment
@@ -165,6 +168,16 @@ var (
 		cli.StringFlag{Name: "aws-region", Value: "us-east-1", Usage: "AWS region to use for artifact storage."},
 	}
 
+	//OCI ObjectStore options
+	OCIObjStoreFlags = []cli.Flag {
+		cli.StringFlag{
+			Name:  "namespace, n", Usage: "Specify the object store namespace",
+		},
+		cli.StringFlag{
+			Name:  "bucket, b", Usage: "Specify the object store bucket",
+		},
+	}
+
 	// Wercker Reporter settings
 	ReporterFlags = []cli.Flag{
 		cli.BoolFlag{Name: "report", Usage: "Report logs back to wercker (requires build-id, wercker-host, wercker-token).", Hidden: true},
@@ -215,6 +228,7 @@ var (
 		RegistryFlags,
 		ArtifactFlags,
 		AWSFlags,
+		OCIObjStoreFlags,
 		ConfigFlags,
 	}
 
@@ -227,6 +241,7 @@ var (
 		RegistryFlags,
 		ArtifactFlags,
 		AWSFlags,
+		OCIObjStoreFlags,
 		ConfigFlags,
 	}
 
@@ -239,6 +254,7 @@ var (
 		RegistryFlags,
 		ArtifactFlags,
 		AWSFlags,
+		OCIObjStoreFlags,
 		ConfigFlags,
 	}
 

@@ -1293,7 +1293,7 @@ func executePipeline(cmdCtx context.Context, options *core.PipelineOptions, dock
 					})
 				}
 
-				if options.ShouldStoreS3 {
+				if options.ShouldStore {
 					artificer := dockerlocal.NewArtificer(options, dockerOptions)
 					err = artificer.Upload(artifact)
 					if err != nil {
