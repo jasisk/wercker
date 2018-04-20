@@ -51,7 +51,11 @@ func (this *OciStore) StoreFromFile(args *StoreFromFileArgs) error {
 	if args.MaxTries == 0 {
 		args.MaxTries = 1
 	}
-	configProv := ocisdkcomm.ConfigurationProviderEnvironmentVariables(OciEnvVarPrefix, "");
+	configProviders := []ocisdkcomm.ConfigurationProvider {
+		ocisdkcomm.ConfigurationProviderEnvironmentVariables(OciEnvVarPrefix, ""),
+		ocisdkcomm.DefaultConfigProvider(),
+	}
+	configProv, err := ocisdkcomm.ComposingConfigurationProvider(configProviders)
 	objStoreClient, err := ocisdkstorage.NewObjectStorageClientWithConfigurationProvider(configProv)
 	if err != nil {
 		return err
