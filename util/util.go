@@ -495,7 +495,7 @@ func (s ByModifiedTime) Swap(i, j int) {
 	s[i], s[j] = s[j], s[i]
 }
 
-// Less returns true if the first value shoudl appear first in the
+// Less returns true if the first value should appear first in the
 // sorted results
 func (s ByModifiedTime) Less(i, j int) bool {
 	return s[i].ModTime().After(s[j].ModTime())

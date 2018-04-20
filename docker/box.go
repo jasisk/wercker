@@ -195,7 +195,7 @@ func (b *DockerBox) RunServices(ctx context.Context, env *util.Environment) erro
 	ctxWithServiceCount := context.WithValue(ctx, "ServiceCount", len(b.services))
 
 	for _, service := range b.services {
-		b.logger.Debugln("Startinq service:", service.GetName())
+		b.logger.Debugln("Starting service:", service.GetName())
 		_, err := service.Run(ctxWithServiceCount, env)
 		if err != nil {
 			return err
@@ -612,7 +612,7 @@ func (b *DockerBox) Fetch(ctx context.Context, env *util.Environment) (*docker.I
 	r, w := io.Pipe()
 	defer w.Close()
 
-	// emitStatusses in a different go routine
+	// emitStatuses in a different go routine
 	go EmitStatus(e, r, b.options)
 
 	options := docker.PullImageOptions{

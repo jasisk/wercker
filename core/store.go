@@ -41,7 +41,7 @@ type StoreFromFileArgs struct {
 }
 
 // GenerateBaseKey generates the base key based on ApplicationID and either
-// DeployID or BuilID
+// DeployID or BuildID
 func GenerateBaseKey(options *PipelineOptions) string {
 	key := fmt.Sprintf("project-artifacts/%s/%s", options.ApplicationID, options.RunID)
 

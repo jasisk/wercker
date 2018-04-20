@@ -305,7 +305,7 @@ func (p *Runner) GetConfig() (*core.Config, string, error) {
 	if rawConfig.NoResponseTimeout > 0 {
 		noResponseTimeout := util.MinInt(rawConfig.NoResponseTimeout, MaxNoResponseTimeout)
 		p.options.NoResponseTimeout = noResponseTimeout * 60 * 1000 // convert to milliseconds
-		p.logger.Debugln("NoReponseTimeout set in config, new NoReponseTimeout:", noResponseTimeout)
+		p.logger.Debugln("NoResponseTimeout set in config, new NoResponseTimeout:", noResponseTimeout)
 	}
 
 	return rawConfig, string(werckerYaml), nil
@@ -670,7 +670,7 @@ func (p *Runner) RunStep(shared *RunnerShared, step core.Step, order int) (*Step
 	if step.ShouldSyncEnv() {
 		err := shared.pipeline.SyncEnvironment(shared.sessionCtx, shared.sess)
 		if err != nil {
-			// If an error occured, just log and ignore it
+			// If an error occurred, just log and ignore it
 			p.logger.WithField("Error", err).Warn("Unable to sync environment")
 		}
 	}

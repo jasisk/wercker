@@ -67,7 +67,7 @@ func NewExternalServiceBox(boxConfig *core.BoxConfig, options *core.PipelineOpti
 }
 
 // Fetch the image representation of an ExternalServiceBox
-// this means running the ExternalServiceBox and comitting the image
+// this means running the ExternalServiceBox and committing the image
 func (s *ExternalServiceBox) Fetch(ctx context.Context, env *util.Environment) (*docker.Image, error) {
 	originalShortName := s.externalConfig.ID
 	box, image, err := s.builder.Build(ctx, env, s.externalConfig)

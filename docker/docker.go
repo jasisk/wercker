@@ -235,7 +235,7 @@ func (s *DockerScratchPushStep) Execute(ctx context.Context, sess *core.Session)
 		Hostname:     containerID[:16],
 		WorkingDir:   s.workingDir,
 		Volumes:      s.volumes,
-		ExposedPorts: tranformPorts(s.ports),
+		ExposedPorts: transformPorts(s.ports),
 	}
 
 	// Make the JSON file we need
@@ -447,7 +447,7 @@ func (s *DockerScratchPushStep) CollectArtifact(containerID string) (*core.Artif
 	return fullArtifact, nil
 }
 
-// DockerPushStep needs to implemenet IStep
+// DockerPushStep needs to implement IStep
 type DockerPushStep struct {
 	*core.BaseStep
 	options       *core.PipelineOptions
@@ -810,7 +810,7 @@ func (s *DockerPushStep) Fetch() (string, error) {
 // Execute commits the current container and pushes it to the configured
 // registry
 func (s *DockerPushStep) Execute(ctx context.Context, sess *core.Session) (int, error) {
-	// TODO(termie): could probably re-use the tansport's client
+	// TODO(termie): could probably re-use the transport's client
 	client, err := NewDockerClient(s.dockerOptions)
 	if err != nil {
 		return 1, err
@@ -900,7 +900,7 @@ func (s *DockerPushStep) buildTags() []string {
 func (s *DockerPushStep) tagAndPush(imageID string, e *core.NormalizedEmitter, client *DockerClient) (int, error) {
 	// Create a pipe since we want a io.Reader but Docker expects a io.Writer
 	r, w := io.Pipe()
-	// emitStatusses in a different go routine
+	// emitStatuses in a different go routine
 	go EmitStatus(e, r, s.options)
 	defer w.Close()
 	for _, tag := range s.tags {
@@ -1019,7 +1019,7 @@ func (s *DockerPushStep) ShouldSyncEnv() bool {
 	return true
 }
 
-func tranformPorts(in map[docker.Port]struct{}) map[nat.Port]struct{} {
+func transformPorts(in map[docker.Port]struct{}) map[nat.Port]struct{} {
 	result := make(map[nat.Port]struct{})
 
 	for k, v := range in {

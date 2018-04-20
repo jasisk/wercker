@@ -132,7 +132,7 @@
 
 ### Features
 
-- Allow users to mount local volumes to their wercker build containers, specified by a list of `volumes` underneath box in the werker.yml file. Must have `--enable-volumes` flag set in order to run.
+- Allow users to mount local volumes to their wercker build containers, specified by a list of `volumes` underneath box in the wercker.yml file. Must have `--enable-volumes` flag set in order to run.
 - Check to see if config from wercker.yml is empty
 - Adds changelog
 

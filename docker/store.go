@@ -113,7 +113,7 @@ func (s *StoreContainerStep) Execute(ctx context.Context, sess *core.Session) (i
 	if err != nil {
 		return -1, err
 	}
-	// TODO(termie): could probably re-use the tansport's client
+	// TODO(termie): could probably re-use the transport's client
 	client, err := NewDockerClient(s.dockerOptions)
 	if err != nil {
 		return -1, err

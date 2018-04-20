@@ -41,7 +41,7 @@ In your git checkout ($GOPATH/src/github.com/wercker/wercker), run:
    govendor sync
 ```
 
-This command should download the appropiate dependencies.
+This command should download the appropriate dependencies.
 
 Once all that is setup, you should be able to run `go build` and get a working
 executable named `wercker`.

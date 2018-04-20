@@ -50,7 +50,7 @@ OPTIONS
 --direct-mount::
   Mount our binds read-write to the pipeline path.
 --expose-ports::
-  Enable ports from wercker.yml beeing exposed to the host system.
+  Enable ports from wercker.yml being exposed to the host system.
 --publish::
   [Deprecated] Use: --expose-ports. - Publish a port from the main container, same format as docker --publish.
 --attach-on-error::

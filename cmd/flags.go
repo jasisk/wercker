@@ -117,7 +117,7 @@ var (
 	// These flags are advanced dev settings
 	InternalDevFlags = []cli.Flag{
 		cli.BoolTFlag{Name: "direct-mount", Usage: "Mount our binds read-write to the pipeline path."},
-		cli.BoolFlag{Name: "expose-ports", Usage: "Enable ports from wercker.yml beeing exposed to the host system."},
+		cli.BoolFlag{Name: "expose-ports", Usage: "Enable ports from wercker.yml being exposed to the host system."},
 		// deprecated
 		cli.StringSliceFlag{Name: "publish", Value: &cli.StringSlice{}, Usage: "[Deprecated] Use: --expose-ports. - Publish a port from the main container, same format as docker --publish.", Hidden: true},
 		cli.BoolFlag{Name: "attach-on-error", Usage: "Attach shell to container if a step fails.", Hidden: true},
@@ -132,7 +132,7 @@ var (
 	// These flags are advanced build settings
 	InternalBuildFlags = []cli.Flag{
 		cli.BoolFlag{Name: "direct-mount", Usage: "Mount our binds read-write to the pipeline path."},
-		cli.BoolFlag{Name: "expose-ports", Usage: "Enable ports from wercker.yml beeing exposed to the host system."},
+		cli.BoolFlag{Name: "expose-ports", Usage: "Enable ports from wercker.yml being exposed to the host system."},
 		// deprecated
 		cli.StringSliceFlag{Name: "publish", Value: &cli.StringSlice{}, Usage: "[Deprecated] Use: --expose-ports. - Publish a port from the main container, same format as docker --publish.", Hidden: true},
 		cli.BoolFlag{Name: "attach-on-error", Usage: "Attach shell to container if a step fails.", Hidden: true},
@@ -146,7 +146,7 @@ var (
 
 	// Flags for advanced deploy settings
 	InternalDeployFlags = []cli.Flag{
-		cli.BoolFlag{Name: "expose-ports", Usage: "Enable ports from wercker.yml beeing exposed to the host system."},
+		cli.BoolFlag{Name: "expose-ports", Usage: "Enable ports from wercker.yml being exposed to the host system."},
 		// deprecated
 		cli.StringSliceFlag{Name: "publish", Value: &cli.StringSlice{}, Usage: "[Deprecated] Use: --expose-ports. - Publish a port from the main container, same format as docker --publish.", Hidden: true},
 		cli.BoolFlag{Name: "attach-on-error", Usage: "Attach shell to container if a step fails.", Hidden: true},

@@ -38,7 +38,7 @@ import (
 // 2. what happens when files written while build running. queue build?
 //    make sure we don't run multiple builds in parallel
 
-// WatchStep needs to implemenet IStep
+// WatchStep needs to implement IStep
 type WatchStep struct {
 	*core.BaseStep
 	Code          string
