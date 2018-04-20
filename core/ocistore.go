@@ -27,7 +27,7 @@ OciEnvVarPrefix is the prefix to use for all environment variables needed by the
  */
 const OciEnvVarPrefix  = "wkr"
 
-// NewS3Store creates a new S3Store
+// NewOciStore creates a new OciStore
 func NewOciStore(options *OciOptions) *OciStore {
 	logger := util.RootLogger().WithField("Logger", "OciStore")
 	if options == nil {

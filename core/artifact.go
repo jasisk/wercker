@@ -24,7 +24,7 @@ import (
 )
 
 // Artifact holds the information required to extract a folder
-// from a container and eventually upload it to S3.
+// from a container and eventually upload it to S3 or OCI objectStore.
 type Artifact struct {
 	ContainerID   string
 	GuestPath     string
@@ -41,7 +41,7 @@ type Artifact struct {
 	Meta          map[string]*string
 }
 
-// URL returns the artifact's S3 url
+// URL returns the artifact's S3 or OCI url
 func (art *Artifact) URL() string {
 	if art.Store == "oci" {
 		remotePath := strings.Replace(art.RemotePath(), "/", "%2F", -1)
