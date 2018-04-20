@@ -716,7 +716,7 @@ func (b *DockerBox) prepareSvcDockerEnvVar(env *util.Environment) ([]string, err
 	serviceEnv := []string{}
 	client := b.client
 	for _, service := range b.services {
-		serviceName := service.GetServiceAlias()
+		serviceName := strings.Replace(service.GetServiceAlias(), "-", "_", -1)
 		if containerID := service.GetID(); containerID != "" {
 			container, err := client.InspectContainer(containerID)
 			if err != nil {
